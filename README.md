@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # java-getting-started
 
 [![CircleCI](https://circleci.com/gh/heroku/java-getting-started.svg?style=svg)](https://circleci.com/gh/heroku/java-getting-started)
@@ -40,3 +41,6 @@ $ heroku open
 For more information about using Java on Heroku, see these Dev Center articles:
 
 - [Java on Heroku](https://devcenter.heroku.com/categories/java)
+=======
+# rocky-reaches-50095 is just for test
+>>>>>>> 71beca8aa6eec7d67dab40bc206ea37c217e6ab4
