@@ -32,6 +32,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -54,7 +55,7 @@ public class Main {
 	}
 	
 	
-	@RequestMapping("/db")
+	/*@RequestMapping("/db")
 	String db(Map<String, Object> model) {
 		try (Connection connection = dataSource.getConnection()) {
 			Statement stmt = connection.createStatement();
@@ -70,18 +71,19 @@ public class Main {
 			model.put("message", e.getMessage());
 			return "error";			
 		}
-	}
+	}*/
 	
 	@RequestMapping("/faculty")
 	String faculty(Map<String, Object> model) {
 		try (Connection connection = dataSource.getConnection()) {
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id,Teachername,password FROM myuser");
-			ArrayList<String> output = new ArrayList<String>();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Faculty");
+			Map<Integer,String> faculty = new HashMap<>();
 			while (rs.next()) {
-				output.add(rs.getString("name")+"         "+rs.getString("password"));
+				faculty.put(rs.getInt("id"),rs.getString("Teacher_Name"));
 			}
-			model.put("records", output);
+			rs.close();
+			model.put("records", faculty);
 			connection.close();
 			return "db";
 		} catch (Exception e) {
